@@ -35,7 +35,8 @@ function App() {
       </p>
 
       <div style={{
-        backgroundColor: "#1e293b",
+        backgroundColor: "#1e293b", 
+       textAlign: "center",
         padding: "25px",
         borderRadius: "15px",
         maxWidth: "500px",
@@ -77,7 +78,7 @@ function App() {
         <button
           onClick={handleAudit}
           style={{
-            backgroundColor: "#3b82f6",
+            backgroundColor: "#2563eb",
             color: "white",
             border: "none",
             padding: "12px 20px",

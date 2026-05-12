@@ -1,26 +1,35 @@
 function App() {
+
+  const auditResult = {
+    savings: 80,
+    recommendation: "Switch to yearly plan for better savings."
+  }
+
   const handleAudit = () => {
-  alert("Audit Generated Successfully!");
-};
+    console.log(auditResult)
+  }
+
   return (
     <div style={{
-      minHeight: "100vh",
       backgroundColor: "#0f172a",
+      minHeight: "100vh",
       color: "white",
       padding: "40px",
       fontFamily: "Arial"
     }}>
-      
+
       <h1 style={{
-        fontSize: "40px",
-        marginBottom: "10px"
+        fontSize: "48px",
+        marginBottom: "10px",
+        textAlign: "center"
       }}>
         AI Spend Audit
       </h1>
 
       <p style={{
         color: "#cbd5e1",
-        marginBottom: "30px"
+        marginBottom: "30px",
+        textAlign: "center"
       }}>
         Discover how much your team can save on AI tools.
       </p>
@@ -29,11 +38,13 @@ function App() {
         backgroundColor: "#1e293b",
         padding: "25px",
         borderRadius: "15px",
-        maxWidth: "500px"
+        maxWidth: "500px",
+        margin: "auto"
       }}>
 
         <label>AI Tool</label>
         <br />
+
         <input
           type="text"
           placeholder="ChatGPT Plus"
@@ -49,6 +60,7 @@ function App() {
 
         <label>Monthly Spend ($)</label>
         <br />
+
         <input
           type="number"
           placeholder="200"
@@ -62,19 +74,41 @@ function App() {
           }}
         />
 
-        <button onClick={handleAudit} 
-        style={{ 
-          backgroundColor: "#3b82f6",
-          color: "white",
-          border: "none",
-          padding: "12px 20px",
-          borderRadius: "10px",
-          cursor: "pointer"
-        }}>
+        <button
+          onClick={handleAudit}
+          style={{
+            backgroundColor: "#3b82f6",
+            color: "white",
+            border: "none",
+            padding: "12px 20px",
+            borderRadius: "10px",
+            cursor: "pointer"
+          }}
+        >
           Generate Audit
         </button>
 
+        <div style={{
+          marginTop: "20px",
+          padding: "20px",
+          backgroundColor: "#0f172a",
+          borderRadius: "10px"
+        }}>
+
+          <h2>Audit Result</h2>
+
+          <p>
+            Estimated Savings: ${auditResult.savings}
+          </p>
+
+          <p>
+            {auditResult.recommendation}
+          </p>
+
+        </div>
+
       </div>
+
     </div>
   )
 }

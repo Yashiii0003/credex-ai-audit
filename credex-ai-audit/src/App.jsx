@@ -1,4 +1,7 @@
 function App() {
+  const handleAudit = () => {
+  alert("Audit Generated Successfully!");
+};
   return (
     <div style={{
       minHeight: "100vh",
@@ -59,7 +62,8 @@ function App() {
           }}
         />
 
-        <button style={{
+        <button onClick={handleAudit} 
+        style={{ 
           backgroundColor: "#3b82f6",
           color: "white",
           border: "none",

@@ -1,6 +1,5 @@
 import * as Lucide from 'lucide-react';
 import SummaryCard from './SummaryCard';
-import EmailCapture from './EmailCapture';
 
 export default function ResultsDashboard({ auditResult, isPublic = false }) {
   if (!auditResult) return null;
@@ -70,8 +69,6 @@ export default function ResultsDashboard({ auditResult, isPublic = false }) {
             </button>
           </div>
         )}
-
-        {!isPublic && <EmailCapture reportId={auditResult.id} />}
       </div>
     </section>
   );

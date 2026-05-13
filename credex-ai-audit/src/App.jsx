@@ -1,13 +1,23 @@
+import { useState } from "react"
 function App() {
+ const [showResult, setShowResult] = useState(false)
+ const [spend, setSpend] = useState("")
+const [teamSize, setTeamSize] = useState("")
+const [estimatedSavings, setEstimatedSavings] = useState("")
+const [recommendation, setRecommendation] = useState("")
+ const handleAudit = () => {
+   const savings = Math.floor(spend * 0.3)
 
-  const auditResult = {
-    savings: 80,
-    recommendation: "Switch to yearly plan for better savings."
+  setEstimatedSavings(savings)
+
+  if (Number(teamSize) > 10) {
+    setRecommendation("Consider enterprise AI plans for larger teams.")
+  } else {
+    setRecommendation("Switch to yearly billing for better savings.")
   }
 
-  const handleAudit = () => {
-    console.log(auditResult)
-  }
+  setShowResult(true)
+}
 
   return (
     <div style={{
@@ -63,8 +73,10 @@ function App() {
         <br />
 
         <input
-          type="number"
+          type="text"
           placeholder="200"
+          value={spend}
+          onChange={(e) => setSpend(Number(e.target.value))}
           style={{
             width: "100%",
             padding: "12px",
@@ -73,9 +85,45 @@ function App() {
             borderRadius: "10px",
             border: "none"
           }}
-        />
+          />
+          <label>Team Size</label>
+<br />
 
-        <button
+<input
+  type="number"
+  placeholder="5"
+  value={teamSize}
+  onChange={(e) => setTeamSize(e.target.value)}
+  style={{
+    width: "100%",
+    padding: "12px",
+    marginTop: "10px",
+    marginBottom: "20px",
+    borderRadius: "10px",
+    border: "none"
+  }}
+/>
+
+<label>Primary Use Case</label>
+<br />
+
+<select
+  style={{
+    width: "100%",
+    padding: "12px",
+    marginTop: "10px",
+    marginBottom: "20px",
+    borderRadius: "10px",
+    border: "none"
+  }}
+>
+  <option>Coding</option>
+  <option>Writing</option>
+  <option>Research</option>
+  <option>Data</option>
+  <option>Mixed</option>
+</select>
+           <button
           onClick={handleAudit}
           style={{
             backgroundColor: "#2563eb",
@@ -83,12 +131,14 @@ function App() {
             border: "none",
             padding: "12px 20px",
             borderRadius: "10px",
-            cursor: "pointer"
+            cursor: "pointer" ,
+            transition: "0.3s",
+fontWeight: "bold",
           }}
         >
           Generate Audit
         </button>
-
+{showResult && (
         <div style={{
           marginTop: "20px",
           padding: "20px",
@@ -99,19 +149,18 @@ function App() {
           <h2>Audit Result</h2>
 
           <p>
-            Estimated Savings: ${auditResult.savings}
+            Estimated Savings: ${estimatedSavings}
           </p>
 
           <p>
-            {auditResult.recommendation}
+            {recommendation}
           </p>
 
         </div>
-
+      )}
       </div>
-
-    </div>
-  )
+      </div>
+      )
 }
 
-export default App
+export default App;
